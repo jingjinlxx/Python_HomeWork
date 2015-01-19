@@ -1,0 +1,17 @@
+from PyLuaTblParser import * 
+
+a1 = PyLuaTblParser()
+a2 = PyLuaTblParser()
+a3 = PyLuaTblParser()
+test_str = '{array = {65,23,5,"\\\"ab"},dict = {mixed = {43,54.33,false,9,string = "value",true, NullEmpt=nil, [6] = 1},array = {3,6,4,},string = "value","",},"stringTest"}'
+test_str2 = '{array = {65,23,5,3,"",},}'
+test_str3 = '{["/\\\\\\\"\\b\\f\\n\\r\\t`1~!@#$%^&*()_+-=[]{}|;:\\\',./<>?"] = -12E+10}'
+test_str4 = '{["\\\\\\\""] = "c"}'
+a1.load(test_str)
+d1 = a1.dumpDict()
+print d1	
+a2.loadDict(d1)
+print a1.dump()
+a2.dumpLuaTable("error.txt")
+a3.loadLuaTable("error.txt")
+d3 = a3.dumpDict()

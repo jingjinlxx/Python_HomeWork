@@ -1,0 +1,14 @@
+本模块用作将Lua Table转换为Python的内置数据结构(依内容分别转为list或者dict)
+
+使用方法：
+    1、用from PyLuaTblParser import *指令将同一目录下的PyLuaTblParser.py模块import进所调用的模块
+    2、创建一个Parser对象如: a1 = PyLuaTblParser()
+    3、读取Lua table数据，输入s为一个符合Lua table定义的字符串，无返回值,如:a1.load(lua_str) 该函数将会在内部
+    生成一个对应的list或者dict
+    4、从文件中读取Lua table字符串，file_path为文件路径,如: a1.loadLuaTable(file_path)
+    5、根据类中数据返回Lua table字符串,如: a1.dump()
+    6、返回一个dict,如: a1.dumpDict()
+    7、将类中的内容以Lua table格式存入文件，file_path为文件路径，文件若存在则覆盖,如:a1.dumpLuaTable(file_path) 
+
+注意：
+    当输入的lua table非法时，将会抛出对应的异常，当IO操作失败时，将会抛出IO异常
